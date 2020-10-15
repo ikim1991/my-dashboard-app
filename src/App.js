@@ -1,5 +1,7 @@
 import React from 'react';
 import MainPage from './components/MainPage';
+import LogIn from './components/LogIn';
+import Register from './components/Register';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -20,7 +22,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <MainPage/>
+      <Register/>
     </div>
   );
 }
