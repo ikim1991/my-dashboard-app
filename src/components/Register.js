@@ -1,7 +1,8 @@
 import React from 'react';
 import './css/Register.css';
 import { connect } from 'react-redux';
-import { registerUser } from '../actions';
+import { registerUser, navigateToLogin } from '../actions';
+import { validateRegisterForm, clearRegisterForm } from './scripts/scripts';
 
 const mapStateToProps = (state) => {
   return{
@@ -13,13 +14,16 @@ const mapDispatchToProps = (dispatch) => {
   return{
     onRegisterUser: (credentials) => {
       dispatch(registerUser(credentials))
+    },
+    onNavigateToLogin: () => {
+      dispatch(navigateToLogin())
     }
   }
 }
 
 function Register(props){
 
-  const { onRegisterUser } = props
+  const { onRegisterUser, onNavigateToLogin } = props
 
   const onRegister = (e) => {
     e.preventDefault()
@@ -30,11 +34,12 @@ function Register(props){
     if(credentials[0].length > 0 && credentials[1].length > 0 && credentials[2].length > 0 && credentials[3].length > 0){
       if(credentials[2] === credentials[3]){
         onRegisterUser(credentials)
+        clearRegisterForm()
       }else{
-        console.log("RUN SCRIPT")
+        validateRegisterForm()
       }
     }else{
-      console.log("RUN SCRIPT")
+      validateRegisterForm()
     }
     e.target.disabled = false
   }
@@ -46,7 +51,7 @@ function Register(props){
           <h2>Register Form</h2>
         </div>
         <div className="register-main">
-          <form>
+          <form id="register-form">
             <div className="form-group">
               <label>Email address</label>
               <input type="email" className="form-control" placeholder="Enter Email"/>
@@ -65,7 +70,7 @@ function Register(props){
             </div>
             <div className="register-buttons">
               <button type="submit" className="btn btn-secondary" onClick={onRegister}>Register</button>
-              <button type="button" className="btn btn-secondary">Login</button>
+              <button type="button" className="btn btn-secondary" onClick={onNavigateToLogin}>Login</button>
             </div>
           </form>
         </div>

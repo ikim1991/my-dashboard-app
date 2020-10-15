@@ -4,7 +4,6 @@ const initialLoginStatusState = {
     email: "",
   },
   loggedIn: false,
-  token: "",
   isPending: false,
   error: ""
 }
@@ -12,29 +11,34 @@ const initialLoginStatusState = {
 export const loginStatus = (state = initialLoginStatusState, action={}) => {
   switch(action.type){
     case "LOGIN_PENDING":
-      return Object.assign({}, state, { isPending: true })
+      return Object.assign({}, state, { isPending: true, loggedIn: false })
     case "LOGIN_SUCCESS":
-      return Object.assign({}, state, { isPending: false, user: action.payload.user, loggedIn: true, token: action.payload.token })
+      return Object.assign({}, state, { isPending: false, user: action.payload, loggedIn: true })
+    case "REGISTER_PENDING":
+      return Object.assign({}, state, { isPending: true, loggedIn: false })
+    case "REGISTER_SUCCESS":
+      return Object.assign({}, state, { isPending: false, user: action.payload, loggedIn: true })
+    case "REGISTER_ERROR":
+      return Object.assign({}, state, { error: action.payload.error, isPending: false, loggedIn: false })
     case "LOGIN_ERROR":
-      return Object.assign({}, state, { error: action.payload.error, isPending: false })
+      return Object.assign({}, state, { error: action.payload.error, isPending: false, loggedIn: false })
     default:
       return state
   }
 }
 
-const initialRegisterCredentials = {
-  isPending: false,
-  error: ""
+export const initialNavigationPage = {
+  navigation: "register"
 }
 
-export const registerCredentials = (state = initialRegisterCredentials, action={}) => {
+export const navigationStatus = (state = initialNavigationPage, action={}) => {
   switch(action.type){
-    case "REGISTER_PENDING":
-      return Object.assign({}, state, { isPending: true })
-    case "REGISTER_SUCCESS":
-      return Object.assign({}, state, { isPending: false })
-    case "REGISTER_ERROR":
-      return Object.assign({}, state, { error: action.payload.error, isPending: false })
+    case "LOGIN":
+      return Object.assign({}, state, { navigation: "login" })
+    case "REGISTER":
+      return Object.assign({}, state, { navigation: "register" })
+    case "MAIN":
+      return Object.assign({}, state, { navigation: "main" })
     default:
       return state
   }

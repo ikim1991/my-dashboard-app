@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const mapStateToProps = (state) => {
   return{
-    loggedIn: state.loginStatus.loggedIn
+    loggedIn: state.loginStatus.loggedIn,
+    navigation: state.navigationStatus.navigation
   }
 }
 
@@ -18,13 +19,34 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function App(props) {
-  const { loggedIn } = props
+  const { loggedIn, navigation } = props
 
-  return (
-    <div className="App">
-      <LogIn/>
-    </div>
-  );
+  switch(navigation){
+    case "login":
+      return(
+        <div className="App">
+          <LogIn/>
+        </div>
+      )
+    case "register":
+      return(
+        <div className="App">
+          <Register/>
+        </div>
+      )
+    case "main":
+      return(
+        <div className="App">
+          <MainPage/>
+        </div>
+      )
+    default:
+      return(
+        <div className="App">
+          <LogIn/>
+        </div>
+      )
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

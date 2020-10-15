@@ -1,12 +1,12 @@
 import React from 'react';
 import './css/LogIn.css';
 import { connect } from 'react-redux';
-import { userLogin } from '../actions';
+import { userLogin, navigateToRegister } from '../actions';
+import { validateLoginForm, clearLoginForm } from './scripts/scripts';
 
 const mapStateToProps = (state) => {
   return{
     user: state.loginStatus.user,
-    token: state.loginStatus.token,
     error: state.loginStatus.error
   }
 }
@@ -15,6 +15,9 @@ const mapDispatchToProps = (dispatch) => {
   return{
     onUserLogin: (credentials) => {
       dispatch(userLogin(credentials))
+    },
+    onNavigateToRegister: () => {
+      dispatch(navigateToRegister())
     }
   }
 }
@@ -22,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function LogIn(props){
 
-  const { user, token, onUserLogin } = props
+  const { user, token, onUserLogin, onNavigateToRegister } = props
 
   const onLogin = (e) => {
     e.preventDefault()
@@ -32,8 +35,9 @@ function LogIn(props){
 
     if(credentials[0].length > 0 && credentials[1].length > 0){
       onUserLogin(credentials)
+      clearLoginForm()
     }else {
-      console.log("RUN SCRIPT...")
+      validateLoginForm()
     }
 
     e.target.disabled = false
@@ -46,7 +50,7 @@ function LogIn(props){
           <h2>Log In Form</h2>
         </div>
         <div className="login-main">
-          <form>
+          <form id="login-form">
             <div className="form-group">
               <label>Email address</label>
               <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -57,7 +61,7 @@ function LogIn(props){
             </div>
             <div className="login-buttons">
               <button type="submit" className="btn btn-secondary" onClick={onLogin}>Login</button>
-              <button type="button" className="btn btn-secondary">Register</button>
+              <button type="button" className="btn btn-secondary" onClick={onNavigateToRegister}>Register</button>
             </div>
           </form>
         </div>

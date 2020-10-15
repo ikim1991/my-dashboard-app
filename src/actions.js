@@ -12,12 +12,11 @@ export const userLogin = (credentials) => (dispatch) => {
   })
   .then(res => res.json())
   .then(data => console.log(data))
+  .catch(error => dispatch({ type: "LOGIN_ERROR", payload: error}))
 }
 
 export const registerUser = (credentials) => (dispatch) => {
   dispatch({type: "REGISTER_PENDING"})
-  console.log(credentials)
-  console.log(`${process.env.REACT_APP_BACKEND_URL}users`)
   fetch(`${process.env.REACT_APP_BACKEND_URL}users`, {
     method: 'post',
     headers: {
@@ -31,4 +30,9 @@ export const registerUser = (credentials) => (dispatch) => {
   })
   .then(res => res.json())
   .then(data => console.log(data))
+  .catch(error => dispatch({ type: "REGISTER_ERROR", payload: error}))
 }
+
+export const navigateToLogin = () => ({type: "LOGIN"})
+export const navigateToRegister = () => ({type: "REGISTER"})
+export const navigateToMain = () => ({type: "MAIN"})
