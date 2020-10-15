@@ -29,7 +29,7 @@ function Register(props){
 
     if(credentials[0].length > 0 && credentials[1].length > 0 && credentials[2].length > 0 && credentials[3].length > 0){
       if(credentials[2] === credentials[3]){
-        registerUser(credentials)
+        onRegisterUser(credentials)
       }else{
         console.log("RUN SCRIPT")
       }

@@ -22,7 +22,7 @@ function App(props) {
 
   return (
     <div className="App">
-      <Register/>
+      <LogIn/>
     </div>
   );
 }

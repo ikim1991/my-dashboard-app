@@ -16,6 +16,8 @@ export const userLogin = (credentials) => (dispatch) => {
 
 export const registerUser = (credentials) => (dispatch) => {
   dispatch({type: "REGISTER_PENDING"})
+  console.log(credentials)
+  console.log(`${process.env.REACT_APP_BACKEND_URL}users`)
   fetch(`${process.env.REACT_APP_BACKEND_URL}users`, {
     method: 'post',
     headers: {
