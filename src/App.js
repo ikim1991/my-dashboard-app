@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const mapStateToProps = (state) => {
   return{
-    loggedIn: state.loginStatus.loggedIn,
     navigation: state.navigationStatus.navigation
   }
 }
@@ -19,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function App(props) {
-  const { loggedIn, navigation } = props
+  const { navigation } = props
 
   switch(navigation){
     case "login":

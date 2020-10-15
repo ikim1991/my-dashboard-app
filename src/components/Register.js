@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/Register.css';
 import { connect } from 'react-redux';
-import { registerUser, navigateToLogin } from '../actions';
+import { registerUser, navigateToLogin, navigateToMain } from '../actions';
 import { validateRegisterForm, clearRegisterForm } from './scripts/scripts';
 
 const mapStateToProps = (state) => {
@@ -17,13 +17,16 @@ const mapDispatchToProps = (dispatch) => {
     },
     onNavigateToLogin: () => {
       dispatch(navigateToLogin())
+    },
+    onNavigateToMain: () => {
+      dispatch(navigateToMain())
     }
   }
 }
 
 function Register(props){
 
-  const { onRegisterUser, onNavigateToLogin } = props
+  const { onRegisterUser, onNavigateToLogin, onNavigateToMain } = props
 
   const onRegister = (e) => {
     e.preventDefault()
@@ -35,6 +38,7 @@ function Register(props){
       if(credentials[2] === credentials[3]){
         onRegisterUser(credentials)
         clearRegisterForm()
+        onNavigateToMain()
       }else{
         validateRegisterForm()
       }

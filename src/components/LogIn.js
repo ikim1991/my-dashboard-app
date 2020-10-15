@@ -1,12 +1,11 @@
 import React from 'react';
 import './css/LogIn.css';
 import { connect } from 'react-redux';
-import { userLogin, navigateToRegister } from '../actions';
+import { userLogin, navigateToRegister, navigateToMain } from '../actions';
 import { validateLoginForm, clearLoginForm } from './scripts/scripts';
 
 const mapStateToProps = (state) => {
   return{
-    user: state.loginStatus.user,
     error: state.loginStatus.error
   }
 }
@@ -18,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onNavigateToRegister: () => {
       dispatch(navigateToRegister())
+    },
+    onNavigateToMain: () => {
+      dispatch(navigateToMain())
     }
   }
 }
@@ -25,7 +27,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function LogIn(props){
 
-  const { user, token, onUserLogin, onNavigateToRegister } = props
+  const { onUserLogin, onNavigateToRegister, onNavigateToMain } = props
 
   const onLogin = (e) => {
     e.preventDefault()
@@ -36,6 +38,7 @@ function LogIn(props){
     if(credentials[0].length > 0 && credentials[1].length > 0){
       onUserLogin(credentials)
       clearLoginForm()
+      onNavigateToMain()
     }else {
       validateLoginForm()
     }

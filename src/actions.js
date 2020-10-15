@@ -11,7 +11,10 @@ export const userLogin = (credentials) => (dispatch) => {
     })
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => {
+    dispatch({type: "LOGIN_SUCCESS", payload: { name: data.name, email: data.email }})
+    localStorage.setItem("token", data.token)
+  })
   .catch(error => dispatch({ type: "LOGIN_ERROR", payload: error}))
 }
 
@@ -29,7 +32,10 @@ export const registerUser = (credentials) => (dispatch) => {
      })
   })
   .then(res => res.json())
-  .then(data => console.log(data))
+  .then(data => {
+    dispatch({type: "REGISTER_SUCCESS", payload: { name: data.name, email: data.email }})
+    localStorage.setItem("token", data.token)
+  })
   .catch(error => dispatch({ type: "REGISTER_ERROR", payload: error}))
 }
 

@@ -3,7 +3,6 @@ const initialLoginStatusState = {
     name: "",
     email: "",
   },
-  loggedIn: false,
   isPending: false,
   error: ""
 }
@@ -28,7 +27,7 @@ export const loginStatus = (state = initialLoginStatusState, action={}) => {
 }
 
 export const initialNavigationPage = {
-  navigation: "register"
+  navigation: "login"
 }
 
 export const navigationStatus = (state = initialNavigationPage, action={}) => {
