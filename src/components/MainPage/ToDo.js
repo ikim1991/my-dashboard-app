@@ -1,10 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-function ToDo(){
+const mapStateToProps = (state) => {
+  return{
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    
+  }
+}
+
+function ToDo(props){
   return(
     <div className="todo bg-dark d-inline-block">
     </div>
   )
 }
 
-export default ToDo;
+export default connect(mapStateToProps, mapDispatchToProps)(ToDo);

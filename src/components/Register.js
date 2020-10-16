@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/Register.css';
 import { connect } from 'react-redux';
-import { registerUser, navigateToLogin, navigateToMain } from '../actions';
+import { registerUser, navigateToLogin } from '../actions';
 import { validateRegisterForm, clearRegisterForm } from './scripts/scripts';
 
 const mapStateToProps = (state) => {
@@ -17,16 +17,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     onNavigateToLogin: () => {
       dispatch(navigateToLogin())
-    },
-    onNavigateToMain: () => {
-      dispatch(navigateToMain())
     }
   }
 }
 
 function Register(props){
 
-  const { onRegisterUser, onNavigateToLogin, onNavigateToMain } = props
+  const { onRegisterUser, onNavigateToLogin } = props
 
   const onRegister = (e) => {
     e.preventDefault()
@@ -36,9 +33,8 @@ function Register(props){
 
     if(credentials[0].length > 0 && credentials[1].length > 0 && credentials[2].length > 0 && credentials[3].length > 0){
       if(credentials[2] === credentials[3]){
-        onRegisterUser(credentials)
         clearRegisterForm()
-        onNavigateToMain()
+        onRegisterUser(credentials)
       }else{
         validateRegisterForm()
       }
@@ -58,19 +54,19 @@ function Register(props){
           <form id="register-form">
             <div className="form-group">
               <label>Email address</label>
-              <input type="email" className="form-control" placeholder="Enter Email"/>
+              <input type="email" className="form-control" placeholder="Enter Email" defaultValue="onepiece@example.com"/>
             </div>
             <div className="form-group">
               <label>Username</label>
-              <input type="text" className="form-control" placeholder="Enter Username"/>
+              <input type="text" className="form-control" placeholder="Enter Username" defaultValue="Monkey D. Luffy"/>
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control" placeholder="Password"/>
+              <input type="password" className="form-control" placeholder="Password" defaultValue="gomugomu"/>
             </div>
             <div className="form-group">
               <label>Confirm Password</label>
-              <input type="password" className="form-control" placeholder="Confirm Password"/>
+              <input type="password" className="form-control" placeholder="Confirm Password" defaultValue="gomugomu"/>
             </div>
             <div className="register-buttons">
               <button type="submit" className="btn btn-secondary" onClick={onRegister}>Register</button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/LogIn.css';
 import { connect } from 'react-redux';
-import { userLogin, navigateToRegister, navigateToMain } from '../actions';
+import { userLogin, navigateToRegister } from '../actions';
 import { validateLoginForm, clearLoginForm } from './scripts/scripts';
 
 const mapStateToProps = (state) => {
@@ -17,9 +17,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     onNavigateToRegister: () => {
       dispatch(navigateToRegister())
-    },
-    onNavigateToMain: () => {
-      dispatch(navigateToMain())
     }
   }
 }
@@ -27,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function LogIn(props){
 
-  const { onUserLogin, onNavigateToRegister, onNavigateToMain } = props
+  const { onUserLogin, onNavigateToRegister } = props
 
   const onLogin = (e) => {
     e.preventDefault()
@@ -36,9 +33,8 @@ function LogIn(props){
     const credentials = Array.from(document.querySelectorAll(".login-main input")).map(target => target.value)
 
     if(credentials[0].length > 0 && credentials[1].length > 0){
-      onUserLogin(credentials)
       clearLoginForm()
-      onNavigateToMain()
+      onUserLogin(credentials)
     }else {
       validateLoginForm()
     }
@@ -56,11 +52,11 @@ function LogIn(props){
           <form id="login-form">
             <div className="form-group">
               <label>Email address</label>
-              <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email"/>
+              <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" defaultValue="onepiece@example.com"/>
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control" placeholder="Password"/>
+              <input type="password" className="form-control" placeholder="Password" defaultValue="gomugomu"/>
             </div>
             <div className="login-buttons">
               <button type="submit" className="btn btn-secondary" onClick={onLogin}>Login</button>
