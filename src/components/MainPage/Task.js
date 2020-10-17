@@ -1,28 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
-
-const mapStateToProps = (state) => {
-  return{
-
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return{
-
-  }
-}
+import moment from 'moment';
 
 function Task(props){
 
-  
+  const { description, deadline, key } = props
+
 
   return(
-    <div className="task border border-secondary text-light">
-      <p className="description">TASK 1</p>
-      <button type="button" className="task-delete btn btn-dark">X</button>
+    <div className="task border border-secondary text-light" key={key}>
+      <div className="description">
+        <p>{`${description}`}</p>
+        <p>{`Complete By: ${moment(deadline).format("YYYY-MM-DD")}`}</p>
+      </div>
+      <div className="task-delete">
+        <div>X</div>
+      </div>
     </div>
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Task);
+export default Task;

@@ -52,7 +52,8 @@ export const navigationStatus = (state = initialNavigationPage, action={}) => {
 const initialToDoList = {
   tasks: [],
   pending: false,
-  error: ""
+  error: "",
+  createWindow: false
 }
 
 export const toDoListStatus = (state = initialToDoList, action={}) => {
@@ -69,6 +70,10 @@ export const toDoListStatus = (state = initialToDoList, action={}) => {
       return Object.assign({}, state, { tasks: action.payload, pending: false })
     case "TASK_ERROR":
       return Object.assign({}, state, { error: action.payload.error, isPending: false })
+    case "OPEN_WINDOW":
+      return Object.assign({}, state, { createWindow: true })
+    case "CLOSE_WINDOW":
+      return Object.assign({}, state, { createWindow: false })
     default:
       return state
   }

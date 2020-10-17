@@ -1,6 +1,8 @@
 export const navigateToLogin = () => ({type: "LOGIN"})
 export const navigateToRegister = () => ({type: "REGISTER"})
 export const navigateToMain = () => ({type: "MAIN"})
+export const openWindow = () => ({type: "OPEN_WINDOW"})
+export const closeWindow = () => ({type:"CLOSE_WINDOW"})
 
 export const userLogin = (credentials) => (dispatch) => {
   dispatch({type: "LOGIN_PENDING"})
@@ -59,4 +61,24 @@ export const userLogOut = () =>(dispatch) => {
   })
   .then(() => dispatch({ type: "LOGIN"}))
   .catch(error => dispatch({ type: "LOGOUT_ERROR", payload: error}))
+}
+
+export const createNewTask = (description, deadline) => (dispatch) => {
+  dispatch({type: "TASK_PENDING"})
+  fetch(`${process.env.REACT_APP_BACKEND_URL}tasks`, {
+    method: 'post',
+    headers:{
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.token
+    },
+    body: JSON.stringify({
+      description, deadline
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    dispatch({type: "CREATE_TASK", payload: data})
+    dispatch({type: "CLOSE_WINDOW"})
+  })
+  .catch(error => dispatch({type:"TASK_ERROR", payload: error}))
 }
