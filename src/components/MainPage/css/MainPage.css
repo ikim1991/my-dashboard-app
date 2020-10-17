@@ -58,9 +58,59 @@
   width: 25%;
   height: 80%;
   overflow: hidden;
+  display: block;
 }
 .todo:hover{
   overflow-y: scroll;
+}
+.todo-add{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.task{
+  display: grid;
+  grid-template-columns: 90% 10%;
+  height: 15%;
+  cursor: pointer;
+}
+.description{
+  padding: 10px;
+}
+.completed{
+  text-decoration: line-through;
+}
+.task-create{
+  position: absolute;
+  width: 25%;
+  z-index: 1;
+  height: 80%;
+}
+.task-create-buttons{
+  text-align: right;
+}
+.task-description{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.task-description h6{
+  text-indent: 1em;
+  font-weight: bold;
+}
+.task-description textarea{
+  width: 95%;
+  justify-self: center;
+  margin-bottom: 10px;
+}
+.task-description input{
+  width: 95%;
+  justify-self: center;
+  margin-bottom: 20px;
+}
+.create-task{
+  margin-left: 10px;
 }
 
 /* Custom Scrollbar */

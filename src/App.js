@@ -4,6 +4,7 @@ import LogIn from './components/LogIn';
 import Register from './components/Register';
 import { connect } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 const mapStateToProps = (state) => {
   return{

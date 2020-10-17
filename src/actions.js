@@ -16,7 +16,6 @@ export const userLogin = (credentials) => (dispatch) => {
   })
   .then(res => res.json())
   .then(data => {
-    console.log(data)
     dispatch({type: "LOGIN_SUCCESS", payload: { name: data.user.name, email: data.user.email }})
     localStorage.token = data.token
   })
