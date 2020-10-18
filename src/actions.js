@@ -19,6 +19,7 @@ export const userLogin = (credentials) => (dispatch) => {
   .then(res => res.json())
   .then(data => {
     dispatch({type: "LOGIN_SUCCESS", payload: { name: data.user.name, email: data.user.email }})
+    dispatch({type: "GET_TASKS", payload: data.tasks})
     localStorage.token = data.token
   })
   .then(() => dispatch({type: "MAIN"}))
@@ -81,4 +82,36 @@ export const createNewTask = (description, deadline) => (dispatch) => {
     dispatch({type: "CLOSE_WINDOW"})
   })
   .catch(error => dispatch({type:"TASK_ERROR", payload: error}))
+}
+
+export const completeTask = (id) => (dispatch)=> {
+  dispatch({ type: "TASK_PENDING" })
+  fetch(`${process.env.REACT_APP_BACKEND_URL}tasks/${id}`, {
+    method: 'post',
+    headers:{
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.token
+    }
+  })
+  .then(res => res.json())
+  .then((data) => {
+    dispatch({ type: "COMPLETE_TASK", payload: data })
+  })
+  .catch(error => dispatch({type: "TASK_ERROR", payload: error}))
+}
+
+export const deleteTask = (id) => (dispatch) => {
+  dispatch({type: "TASK_PENDING" })
+  fetch(`${process.env.REACT_APP_BACKEND_URL}tasks/${id}`, {
+    method: 'delete',
+    headers:{
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.token
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    dispatch({type: "DELETE_TASK", payload: data})
+  })
+  .catch(error => dispatch({type: "TASK_ERROR", payload: error}))
 }
