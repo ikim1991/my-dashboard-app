@@ -69,11 +69,61 @@ export const toDoListStatus = (state = initialToDoList, action={}) => {
     case "DELETE_TASK":
       return Object.assign({}, state, { tasks: action.payload, pending: false })
     case "TASK_ERROR":
-      return Object.assign({}, state, { error: action.payload.error, isPending: false })
+      return Object.assign({}, state, { error: action.payload, pending: false })
     case "OPEN_WINDOW":
       return Object.assign({}, state, { createWindow: true })
     case "CLOSE_WINDOW":
       return Object.assign({}, state, { createWindow: false })
+    default:
+      return state
+  }
+}
+
+const initialStockTickers = {
+  tickers: [
+    { symbol: "",
+    market: ""
+    },
+    { symbol: "",
+    market: ""
+    },
+    { symbol: "",
+    market: ""
+    },
+    { symbol: "",
+    market: ""
+    },
+    { symbol: "",
+    market: ""
+    },
+    { symbol: "",
+    market: ""
+    },
+    { symbol: "",
+    market: ""
+    },
+    { symbol: "",
+    market: ""
+    },
+  ],
+  tickerData: [{}, {}, {}, {}, {}, {}, {}, {}],
+  pending: false,
+  editMode: false,
+  error: ""
+}
+
+export const updateStockTickers = (state = initialStockTickers, action={}) => {
+  switch(action.type){
+    case "TICKER_PENDING":
+      return Object.assign({}, state, { pending: true})
+    case "TICKER_SUCCESS":
+      return Object.assign({}, state, { pending: false, tickers: action.payload.tickers, tickerData: action.payload.tickerData })
+    case "TICKER_ERROR":
+      return Object.assign({}, state, { pending: false, error: action.payload })
+    case "EDIT_MODE_ON":
+      return Object.assign({}, state, { editMode: true })
+    case "EDIT_MODE_OFF":
+      return Object.assign({}, state, { editMode: false })
     default:
       return state
   }

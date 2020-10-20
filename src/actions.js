@@ -3,6 +3,8 @@ export const navigateToRegister = () => ({type: "REGISTER"})
 export const navigateToMain = () => ({type: "MAIN"})
 export const openWindow = () => ({type: "OPEN_WINDOW"})
 export const closeWindow = () => ({type:"CLOSE_WINDOW"})
+export const editModeOn = () => ({type: "EDIT_MODE_ON"})
+export const editModeOff = () => ({type: "EDIT_MODE_OFF"})
 
 export const userLogin = (credentials) => (dispatch) => {
   dispatch({type: "LOGIN_PENDING"})
@@ -114,4 +116,23 @@ export const deleteTask = (id) => (dispatch) => {
     dispatch({type: "DELETE_TASK", payload: data})
   })
   .catch(error => dispatch({type: "TASK_ERROR", payload: error}))
+}
+
+export const updateTickerData = (tickers) => (dispatch) => {
+  dispatch({type: "TICKER_PENDING"})
+  fetch(`${process.env.REACT_APP_BACKEND_URL}stocktickers`, {
+    method: 'post',
+    headers:{
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.token
+    },
+    body: JSON.stringify({
+      tickers
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+  })
+  .catch(error => dispatch({type: "TICKER_ERROR", payload: error}))
 }
