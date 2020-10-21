@@ -30,7 +30,12 @@ export const userLogin = (credentials) => (dispatch) => {
     localStorage.token = data.token
   })
   .then(() => dispatch({type: "MAIN"}))
-  .catch(error => dispatch({ type: "LOGIN_ERROR", payload: error}))
+  .catch(error => {
+    dispatch({ type: "LOGIN_ERROR", payload: error })
+    dispatch({ type: "TASK_ERROR", payload: error })
+    dispatch({ type: "TICKER_ERROR", payload: error })
+    dispatch({ type: "JOBS_POSTINGS_ERROR", payload: error })
+  })
 }
 
 export const registerUser = (credentials) => (dispatch) => {
@@ -52,7 +57,12 @@ export const registerUser = (credentials) => (dispatch) => {
     localStorage.token = data.token
   })
   .then(() => dispatch({type: "MAIN"}))
-  .catch(error => dispatch({ type: "REGISTER_ERROR", payload: error}))
+  .catch(error => {
+    dispatch({ type: "REGISTER_ERROR", payload: error})
+    dispatch({ type: "TASK_ERROR", payload: error })
+    dispatch({ type: "TICKER_ERROR", payload: error })
+    dispatch({ type: "JOBS_POSTINGS_ERROR", payload: error })
+  })
 }
 
 export const userLogOut = () =>(dispatch) => {
@@ -63,6 +73,9 @@ export const userLogOut = () =>(dispatch) => {
       'Content-type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.token
     }
+  })
+  .then(() => {
+    localStorage.clear()
   })
   .then(() => {
     dispatch({ type: "LOGOUT_SUCCESS" })
@@ -142,22 +155,6 @@ export const updateTickerData = (tickers) => (dispatch) => {
   .catch(error => dispatch({type: "TICKER_ERROR", payload: error}))
 }
 
-export const refreshTickerData = () => (dispatch) => {
-  dispatch({type: "TICKER_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL}tickers/refresh`, {
-    method: 'get',
-    headers:{
-      'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
-    }
-  })
-  .then(res => res.json())
-  .then(data => {
-    dispatch({ type: "TICKER_SUCCESS", payload: data })
-  })
-  .catch(error => dispatch({type: "TICKER_ERROR", payload: error}))
-}
-
 export const getTickerData = () => (dispatch) => {
   dispatch({type: "TICKER_PENDING"})
   fetch(`${process.env.REACT_APP_BACKEND_URL}tickers`, {
@@ -188,4 +185,32 @@ export const getPostingsData = () => (dispatch) => {
     dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data})
   })
   .catch(error => dispatch({type: "JOBS_POSTINGS_ERROR", payload: error}))
+}
+
+export const refreshPage = () => (dispatch) => {
+  dispatch({type: "LOGIN_PENDING"})
+  dispatch({type: "TASK_PENDING"})
+  dispatch({type: "TICKER_PENDING"})
+  dispatch({type: "JOBS_POSTINGS_PENDING"})
+  fetch(`${process.env.REACT_APP_BACKEND_URL}users/me`, {
+    method: 'get',
+    headers:{
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.token
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    dispatch({type: "LOGIN_SUCCESS", payload: { name: data.user.name, email: data.user.email }})
+    dispatch({type: "GET_TASKS", payload: data.tasks})
+    dispatch({type: "TICKER_SUCCESS", payload: data.tickers})
+    dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data.postings})
+  })
+  .then(() => dispatch({type: "MAIN"}))
+  .catch(error => {
+    dispatch({ type: "LOGIN_ERROR", payload: error })
+    dispatch({ type: "TASK_ERROR", payload: error })
+    dispatch({ type: "TICKER_ERROR", payload: error })
+    dispatch({ type: "JOBS_POSTINGS_ERROR", payload: error })
+  })
 }

@@ -25,7 +25,6 @@ function Header(props){
     e.target.disabled = true
 
     onUserLogOut()
-    localStorage.clear()
 
     e.target.disabled = false
   }
