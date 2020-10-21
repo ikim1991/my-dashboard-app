@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { editModeOn, editModeOff, updateTickerData } from '../../actions';
 import Loader from 'react-loader-spinner';
@@ -30,6 +30,19 @@ const mapDispatchToProps = (dispatch) => {
 function StockTicker(props){
 
   const { tickers, tickerData, editMode, len, onEditModeOn, onEditModeOff, onUpdateTickerData, tickerPending } = props
+
+  useEffect(() => {
+    const myTimer = () =>{
+      if(tickerData.length > 0){
+        onUpdateTickerData(tickers)
+      }
+    }
+    let timer = setInterval(myTimer, 1200000)
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [onUpdateTickerData, tickerData, tickers])
 
   const updateStockTickerData = (e) => {
     e.disabled = true

@@ -13,7 +13,7 @@ function Loading(){
         />
       </div>
       <div className="loading-message">
-        <h4>May Take a Few Seconds to Load on First Login</h4>
+        <h4>May Take a Few Seconds to Load...</h4>
       </div>
     </div>
   )
