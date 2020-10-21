@@ -38,17 +38,40 @@
   height: 100%;
   cursor: pointer;
 }
+.stock-ticker-row{
+  display: grid;
+  width: 12.5%;
+  height: 100%;
+  font-size: 1em;
+  line-height: 1em;
+  text-align: center;
+  cursor: pointer;
+  grid-template-rows: 25% 25% 25% 25%;
+  font-weight: bold;
+}
+.stock-ticker-row div{
+  align-self: center;
+}
 
 .ticker-symbol{
   text-align: center;
   width: 90%;
 }
 .send-stock-data{
-  position: fixed;
-  width: 10%;
-  left: 45%;
-  top: 27.5%;
+  width: 100%;
   z-index: 1;
+}
+.send-stock-data-button-1{
+  width: 20%;
+  position: fixed;
+  top: 27.5%;
+  left: 27.5%;
+}
+.send-stock-data-button-2{
+  width: 20%;
+  position: fixed;
+  top: 27.5%;
+  left: 52.5%;
 }
 
 /* News.js */
@@ -60,6 +83,13 @@
 .news:hover{
   overflow-y: scroll;
 }
+.news a{
+  font-weight: bold;
+}
+.news-story{
+  padding: 5px;
+}
+
 /* Main.js */
 .main{
   width: 50%;
@@ -68,6 +98,18 @@
 }
 .main:hover{
   overflow-y: scroll;
+}
+.main-refresh{
+  margin: 5px;
+  text-align: right;
+  float: right;
+  opacity: 0.7;
+}
+.main-listing{
+  padding: 5px;
+}
+.listing-link{
+  font-weight: bold;
 }
 /* ToDo.js */
 .todo{

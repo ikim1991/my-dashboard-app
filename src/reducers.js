@@ -74,6 +74,8 @@ export const toDoListStatus = (state = initialToDoList, action={}) => {
       return Object.assign({}, state, { createWindow: true })
     case "CLOSE_WINDOW":
       return Object.assign({}, state, { createWindow: false })
+    case "LOGOUT_SUCCESS":
+      return Object.assign({}, state, initialToDoList)
     default:
       return state
   }
@@ -106,9 +108,11 @@ const initialStockTickers = {
     market: ""
     },
   ],
-  tickerData: [{}, {}, {}, {}, {}, {}, {}, {}],
+  tickerData: [],
+  news: [],
   pending: false,
   editMode: false,
+  len: 8,
   error: ""
 }
 
@@ -117,13 +121,36 @@ export const updateStockTickers = (state = initialStockTickers, action={}) => {
     case "TICKER_PENDING":
       return Object.assign({}, state, { pending: true})
     case "TICKER_SUCCESS":
-      return Object.assign({}, state, { pending: false, tickers: action.payload.tickers, tickerData: action.payload.tickerData })
+      return Object.assign({}, state, { pending: false, tickers: action.payload.tickers, tickerData: action.payload.tickerData, news: action.payload.news, len: (8 - action.payload.tickers.length) })
     case "TICKER_ERROR":
       return Object.assign({}, state, { pending: false, error: action.payload })
     case "EDIT_MODE_ON":
       return Object.assign({}, state, { editMode: true })
     case "EDIT_MODE_OFF":
       return Object.assign({}, state, { editMode: false })
+      case "LOGOUT_SUCCESS":
+        return Object.assign({}, state, initialStockTickers)
+    default:
+      return state
+  }
+}
+
+const initialJobPostings = {
+  postings: [],
+  pending: false,
+  error: ""
+}
+
+export const updateJobPostings = (state = initialJobPostings, action={}) => {
+  switch(action.type){
+    case "JOBS_POSTINGS_PENDING":
+      return Object.assign({}, state, { pending: true })
+    case "JOBS_POSTINGS_SUCCESS":
+      return Object.assign({}, state, { pending: false, postings: action.payload.postings })
+    case "JOBS_POSTINGS_ERROR":
+      return Object.assign({}, state, { pending: false, error: action.payload })
+    case "LOGOUT_SUCCESS":
+        return Object.assign({}, state, initialJobPostings)
     default:
       return state
   }
