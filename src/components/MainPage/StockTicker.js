@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { editModeOn, editModeOff, updateTickerData } from '../../actions';
+import Loader from 'react-loader-spinner';
 
 const mapStateToProps = (state) => {
   return{
     tickers: state.updateStockTickers.tickers,
     tickerData: state.updateStockTickers.tickerData,
     editMode: state.updateStockTickers.editMode,
-    len: state.updateStockTickers.len
+    len: state.updateStockTickers.len,
+    tickerPending: state.updateStockTickers.tickerPending
   }
 }
 
@@ -27,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function StockTicker(props){
 
-  const { tickers, tickerData, editMode, len, onEditModeOn, onEditModeOff, onUpdateTickerData } = props
+  const { tickers, tickerData, editMode, len, onEditModeOn, onEditModeOff, onUpdateTickerData, tickerPending } = props
 
   const updateStockTickerData = (e) => {
     e.disabled = true
@@ -113,34 +115,48 @@ function StockTicker(props){
       <div className="stock-ticker bg-light d-flex flex-row flex-wrap justify-content-start align-items-center">
         {
           tickerData.map((ticker, index) => {
-            if(ticker.change.includes("+")){
+            if(tickerPending){
               return(
-                <div className="stock-ticker-row border border-dark bg-success text-light" key={index} onClick={onEditModeOn}>
-                  <div>{ticker.ticker}</div>
-                  <div>{ticker.price}</div>
-                  <div>{ticker.change}</div>
-                  <div>{ticker.status}</div>
+                <div className="row-item border border-dark" key={index} onClick={onEditModeOn}>
+                  <Loader
+                     type="Oval"
+                     color="#00BFFF"
+                     height={50}
+                     width={50}
+                  />
                 </div>
               )
-            } else if(ticker.change.includes("-")){
-              return(
-                <div className="stock-ticker-row border border-dark bg-danger text-light" key={index} onClick={onEditModeOn}>
-                  <div>{ticker.ticker}</div>
-                  <div>{ticker.price}</div>
-                  <div>{ticker.change}</div>
-                  <div>{ticker.status}</div>
-                </div>
-              )
-            } else{
-              return(
-                <div className="stock-ticker-row border border-dark bg-primary text-light" key={index} onClick={onEditModeOn}>
-                  <div>{ticker.ticker}</div>
-                  <div>{ticker.price}</div>
-                  <div>{ticker.change}</div>
-                  <div>{ticker.status}</div>
-                </div>
-              )
+            }else{
+              if(ticker.change.includes("+")){
+                return(
+                  <div className="stock-ticker-row border border-dark bg-success text-light" key={index} onClick={onEditModeOn}>
+                    <div>{ticker.ticker}</div>
+                    <div>{ticker.price}</div>
+                    <div>{ticker.change}</div>
+                    <div>{ticker.status}</div>
+                  </div>
+                )
+              } else if(ticker.change.includes("-")){
+                return(
+                  <div className="stock-ticker-row border border-dark bg-danger text-light" key={index} onClick={onEditModeOn}>
+                    <div>{ticker.ticker}</div>
+                    <div>{ticker.price}</div>
+                    <div>{ticker.change}</div>
+                    <div>{ticker.status}</div>
+                  </div>
+                )
+              } else{
+                return(
+                  <div className="stock-ticker-row border border-dark bg-primary text-light" key={index} onClick={onEditModeOn}>
+                    <div>{ticker.ticker}</div>
+                    <div>{ticker.price}</div>
+                    <div>{ticker.change}</div>
+                    <div>{ticker.status}</div>
+                  </div>
+                )
+              }
             }
+
           })
         }
         {

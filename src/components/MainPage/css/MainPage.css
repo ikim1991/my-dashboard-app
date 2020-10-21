@@ -89,6 +89,11 @@
 .news-story{
   padding: 5px;
 }
+.news-loader{
+  position: relative;
+  top: 30%;
+  text-align: center;
+}
 
 /* Main.js */
 .main{
@@ -98,6 +103,11 @@
 }
 .main:hover{
   overflow-y: scroll;
+}
+.main-loader{
+  position: relative;
+  top: 30%;
+  text-align: center;
 }
 .main-refresh{
   margin: 5px;
