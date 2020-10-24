@@ -52,11 +52,11 @@ function LogIn(props){
           <form id="login-form">
             <div className="form-group">
               <label>Email address</label>
-              <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" defaultValue="onepiece@example.com"/>
+              <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" defaultValue="tester@example.com"/>
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control" placeholder="Password" defaultValue="gomugomu"/>
+              <input type="password" className="form-control" placeholder="Password" defaultValue="testing123"/>
             </div>
             <div className="login-buttons">
               <button type="submit" className="btn btn-secondary" onClick={onLogin}>Login</button>

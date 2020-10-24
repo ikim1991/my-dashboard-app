@@ -54,19 +54,19 @@ function Register(props){
           <form id="register-form">
             <div className="form-group">
               <label>Email address</label>
-              <input type="email" className="form-control" placeholder="Enter Email" defaultValue="onepiece@example.com"/>
+              <input type="email" className="form-control" placeholder="Enter Email" defaultValue="tester@example.com"/>
             </div>
             <div className="form-group">
               <label>Username</label>
-              <input type="text" className="form-control" placeholder="Enter Username" defaultValue="Monkey D. Luffy"/>
+              <input type="text" className="form-control" placeholder="Enter Username" defaultValue="Testing123"/>
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control" placeholder="Password" defaultValue="gomugomu"/>
+              <input type="password" className="form-control" placeholder="Password" defaultValue="testing123"/>
             </div>
             <div className="form-group">
               <label>Confirm Password</label>
-              <input type="password" className="form-control" placeholder="Confirm Password" defaultValue="gomugomu"/>
+              <input type="password" className="form-control" placeholder="Confirm Password" defaultValue="testing123"/>
             </div>
             <div className="register-buttons">
               <button type="submit" className="btn btn-secondary" onClick={onRegister}>Register</button>
