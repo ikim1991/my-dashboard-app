@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/my-dashboard-app/static/css/main.0e1dbfc8.chunk.css",
+    "main.js": "/my-dashboard-app/static/js/main.3f401c0a.chunk.js",
+    "main.js.map": "/my-dashboard-app/static/js/main.3f401c0a.chunk.js.map",
+    "runtime-main.js": "/my-dashboard-app/static/js/runtime-main.b817498d.js",
+    "runtime-main.js.map": "/my-dashboard-app/static/js/runtime-main.b817498d.js.map",
+    "static/css/2.2967fba9.chunk.css": "/my-dashboard-app/static/css/2.2967fba9.chunk.css",
+    "static/js/2.45a78752.chunk.js": "/my-dashboard-app/static/js/2.45a78752.chunk.js",
+    "static/js/2.45a78752.chunk.js.map": "/my-dashboard-app/static/js/2.45a78752.chunk.js.map",
+    "index.html": "/my-dashboard-app/index.html",
+    "precache-manifest.4b009fd7f4936f93fe29ef7b4133d4b3.js": "/my-dashboard-app/precache-manifest.4b009fd7f4936f93fe29ef7b4133d4b3.js",
+    "service-worker.js": "/my-dashboard-app/service-worker.js",
+    "static/css/2.2967fba9.chunk.css.map": "/my-dashboard-app/static/css/2.2967fba9.chunk.css.map",
+    "static/css/main.0e1dbfc8.chunk.css.map": "/my-dashboard-app/static/css/main.0e1dbfc8.chunk.css.map",
+    "static/js/2.45a78752.chunk.js.LICENSE.txt": "/my-dashboard-app/static/js/2.45a78752.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b817498d.js",
+    "static/css/2.2967fba9.chunk.css",
+    "static/js/2.45a78752.chunk.js",
+    "static/css/main.0e1dbfc8.chunk.css",
+    "static/js/main.3f401c0a.chunk.js"
+  ]
+}
