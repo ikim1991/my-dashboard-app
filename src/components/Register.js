@@ -6,7 +6,7 @@ import { validateRegisterForm, clearRegisterForm } from './scripts/scripts';
 
 const mapStateToProps = (state) => {
   return{
-
+    
   }
 }
 
@@ -58,15 +58,15 @@ function Register(props){
             </div>
             <div className="form-group">
               <label>Username</label>
-              <input type="text" className="form-control" placeholder="Enter Username" defaultValue="Testing123"/>
+              <input type="text" className="form-control" placeholder="Enter Username" defaultValue="Tester"/>
             </div>
             <div className="form-group">
               <label>Password</label>
-              <input type="password" className="form-control" placeholder="Password" defaultValue="testing123"/>
+              <input type="password" className="form-control" placeholder="Password" defaultValue="test123"/>
             </div>
             <div className="form-group">
               <label>Confirm Password</label>
-              <input type="password" className="form-control" placeholder="Confirm Password" defaultValue="testing123"/>
+              <input type="password" className="form-control" placeholder="Confirm Password" defaultValue="test123"/>
             </div>
             <div className="register-buttons">
               <button type="submit" className="btn btn-secondary" onClick={onRegister}>Register</button>
