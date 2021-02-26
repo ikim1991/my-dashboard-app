@@ -19,6 +19,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return{
     onRefreshPage: () => {
+      console.log("ON REFRESH")
       dispatch(refreshPage())
     },
     onNavigateToMain: () => {
@@ -28,10 +29,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 function App(props) {
-  const { navigation, loginPending, onRefreshPage  } = props
+  const { navigation, loginPending, onRefreshPage } = props
+  
 
   useEffect(() => {
-    if(localStorage.token){
+    if(sessionStorage.token){
       onRefreshPage()
     }
   }, [onRefreshPage])

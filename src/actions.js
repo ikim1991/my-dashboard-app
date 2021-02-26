@@ -27,7 +27,7 @@ export const userLogin = (credentials) => (dispatch) => {
     dispatch({type: "GET_TASKS", payload: data.tasks})
     dispatch({type: "TICKER_SUCCESS", payload: data.tickers})
     dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data.postings})
-    localStorage.token = data.token
+    sessionStorage.token = data.token
   })
   .then(() => dispatch({type: "MAIN"}))
   .catch(error => {
@@ -54,7 +54,7 @@ export const registerUser = (credentials) => (dispatch) => {
   .then(res => res.json())
   .then(data => {
     dispatch({type: "REGISTER_SUCCESS", payload: { name: data.user.name, email: data.user.email }})
-    localStorage.token = data.token
+    sessionStorage.token = data.token
   })
   .then(() => dispatch({type: "MAIN"}))
   .catch(error => {
@@ -67,15 +67,15 @@ export const registerUser = (credentials) => (dispatch) => {
 
 export const userLogOut = () =>(dispatch) => {
   dispatch({ type: "LOGOUT_PENDING" })
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}users/logout`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}users/logoutall`, {
     method: "post",
     headers: {
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     }
   })
   .then(() => {
-    localStorage.clear()
+    sessionStorage.clear()
   })
   .then(() => {
     dispatch({ type: "LOGOUT_SUCCESS" })
@@ -90,7 +90,7 @@ export const createNewTask = (description, deadline) => (dispatch) => {
     method: 'post',
     headers:{
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     },
     body: JSON.stringify({
       description, deadline
@@ -110,7 +110,7 @@ export const completeTask = (id) => (dispatch)=> {
     method: 'post',
     headers:{
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     }
   })
   .then(res => res.json())
@@ -126,7 +126,7 @@ export const deleteTask = (id) => (dispatch) => {
     method: 'delete',
     headers:{
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     }
   })
   .then(res => res.json())
@@ -142,7 +142,7 @@ export const updateTickerData = (tickers) => (dispatch) => {
     method: 'post',
     headers:{
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     },
     body: JSON.stringify({
       tickers
@@ -161,7 +161,7 @@ export const getTickerData = () => (dispatch) => {
     method: 'get',
     headers:{
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     }
   })
   .then(res => res.json())
@@ -177,7 +177,7 @@ export const getPostingsData = () => (dispatch) => {
     method: 'get',
     headers:{
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     }
   })
   .then(res => res.json())
@@ -187,7 +187,7 @@ export const getPostingsData = () => (dispatch) => {
   .catch(error => dispatch({type: "JOBS_POSTINGS_ERROR", payload: error}))
 }
 
-export const refreshPage = () => (dispatch) => {
+export const refreshPage = () => async (dispatch) => {
   dispatch({type: "LOGIN_PENDING"})
   dispatch({type: "TASK_PENDING"})
   dispatch({type: "TICKER_PENDING"})
@@ -196,7 +196,7 @@ export const refreshPage = () => (dispatch) => {
     method: 'get',
     headers:{
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.token
+      'Authorization': 'Bearer ' + sessionStorage.token
     }
   })
   .then(res => res.json())
@@ -205,8 +205,12 @@ export const refreshPage = () => (dispatch) => {
     dispatch({type: "GET_TASKS", payload: data.tasks})
     dispatch({type: "TICKER_SUCCESS", payload: data.tickers})
     dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data.postings})
+    console.log("DATA LOADED")
   })
-  .then(() => dispatch({type: "MAIN"}))
+  .then(() => {
+    console.log("LOAD PAGE")
+    dispatch({type: "MAIN"})
+  })
   .catch(error => {
     dispatch({ type: "LOGIN_ERROR", payload: error })
     dispatch({ type: "TASK_ERROR", payload: error })
