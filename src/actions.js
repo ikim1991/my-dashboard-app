@@ -184,7 +184,7 @@ export const getPostingsData = () => (dispatch) => {
   .then(res => res.json())
   .then(data => {
     console.log(data)
-    dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data})
+    dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data.postings})
   })
   .catch(error => dispatch({type: "JOBS_POSTINGS_ERROR", payload: error}))
 }
