@@ -143,7 +143,7 @@ function StockTicker(props){
               if(ticker.change.includes("+")){
                 return(
                   <div className="stock-ticker-row border border-dark bg-success text-light" key={index} onClick={onEditModeOn}>
-                    <div>{ticker.ticker}</div>
+                    <div>{ticker.ticker.toUpperCase()}</div>
                     <div>{ticker.price}</div>
                     <div>{ticker.change}</div>
                     <div>{ticker.status}</div>
@@ -152,7 +152,7 @@ function StockTicker(props){
               } else if(ticker.change.includes("-")){
                 return(
                   <div className="stock-ticker-row border border-dark bg-danger text-light" key={index} onClick={onEditModeOn}>
-                    <div>{ticker.ticker}</div>
+                    <div>{ticker.ticker.toUpperCase()}</div>
                     <div>{ticker.price}</div>
                     <div>{ticker.change}</div>
                     <div>{ticker.status}</div>
@@ -161,7 +161,7 @@ function StockTicker(props){
               } else{
                 return(
                   <div className="stock-ticker-row border border-dark bg-primary text-light" key={index} onClick={onEditModeOn}>
-                    <div>{ticker.ticker}</div>
+                    <div>{ticker.ticker.toUpperCase()}</div>
                     <div>{ticker.price}</div>
                     <div>{ticker.change}</div>
                     <div>{ticker.status}</div>

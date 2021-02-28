@@ -12,14 +12,13 @@ import './App.css';
 const mapStateToProps = (state) => {
   return{
     navigation: state.navigationStatus.navigation,
-    loginPending: state.loginStatus.loginPending,
+    loginPending: state.loginStatus.loginPending
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return{
     onRefreshPage: () => {
-      console.log("ON REFRESH")
       dispatch(refreshPage())
     },
     onNavigateToMain: () => {

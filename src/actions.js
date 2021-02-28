@@ -23,6 +23,7 @@ export const userLogin = (credentials) => (dispatch) => {
   })
   .then(res => res.json())
   .then(data => {
+    console.log(data)
     dispatch({type: "LOGIN_SUCCESS", payload: { name: data.user.name, email: data.user.email }})
     dispatch({type: "GET_TASKS", payload: data.tasks})
     dispatch({type: "TICKER_SUCCESS", payload: data.tickers})
@@ -182,6 +183,7 @@ export const getPostingsData = () => (dispatch) => {
   })
   .then(res => res.json())
   .then(data => {
+    console.log(data)
     dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data})
   })
   .catch(error => dispatch({type: "JOBS_POSTINGS_ERROR", payload: error}))
@@ -201,14 +203,13 @@ export const refreshPage = () => async (dispatch) => {
   })
   .then(res => res.json())
   .then(data => {
+    console.log(data)
     dispatch({type: "LOGIN_SUCCESS", payload: { name: data.user.name, email: data.user.email }})
     dispatch({type: "GET_TASKS", payload: data.tasks})
     dispatch({type: "TICKER_SUCCESS", payload: data.tickers})
     dispatch({type: "JOBS_POSTINGS_SUCCESS", payload: data.postings})
-    console.log("DATA LOADED")
   })
   .then(() => {
-    console.log("LOAD PAGE")
     dispatch({type: "MAIN"})
   })
   .catch(error => {
