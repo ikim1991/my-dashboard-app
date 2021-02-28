@@ -11,7 +11,7 @@ export const userLogin = (credentials) => (dispatch) => {
   dispatch({type: "TASK_PENDING"})
   dispatch({type: "TICKER_PENDING"})
   dispatch({type: "JOBS_POSTINGS_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}users/login`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}users/login`, {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
@@ -41,7 +41,7 @@ export const userLogin = (credentials) => (dispatch) => {
 
 export const registerUser = (credentials) => (dispatch) => {
   dispatch({type: "REGISTER_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}users`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}users`, {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
@@ -68,7 +68,7 @@ export const registerUser = (credentials) => (dispatch) => {
 
 export const userLogOut = () =>(dispatch) => {
   dispatch({ type: "LOGOUT_PENDING" })
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}users/logoutall`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}users/logoutall`, {
     method: "post",
     headers: {
       'Content-type': 'application/json',
@@ -87,7 +87,7 @@ export const userLogOut = () =>(dispatch) => {
 
 export const createNewTask = (description, deadline) => (dispatch) => {
   dispatch({type: "TASK_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}tasks`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}tasks`, {
     method: 'post',
     headers:{
       'Content-type': 'application/json',
@@ -107,7 +107,7 @@ export const createNewTask = (description, deadline) => (dispatch) => {
 
 export const completeTask = (id) => (dispatch)=> {
   dispatch({ type: "TASK_PENDING" })
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}tasks/${id}`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}tasks/${id}`, {
     method: 'post',
     headers:{
       'Content-type': 'application/json',
@@ -123,7 +123,7 @@ export const completeTask = (id) => (dispatch)=> {
 
 export const deleteTask = (id) => (dispatch) => {
   dispatch({type: "TASK_PENDING" })
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}tasks/${id}`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}tasks/${id}`, {
     method: 'delete',
     headers:{
       'Content-type': 'application/json',
@@ -139,7 +139,7 @@ export const deleteTask = (id) => (dispatch) => {
 
 export const updateTickerData = (tickers) => (dispatch) => {
   dispatch({type: "TICKER_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}tickers`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}tickers`, {
     method: 'post',
     headers:{
       'Content-type': 'application/json',
@@ -158,7 +158,7 @@ export const updateTickerData = (tickers) => (dispatch) => {
 
 export const getTickerData = () => (dispatch) => {
   dispatch({type: "TICKER_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}tickers`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}tickers`, {
     method: 'get',
     headers:{
       'Content-type': 'application/json',
@@ -174,7 +174,7 @@ export const getTickerData = () => (dispatch) => {
 
 export const getPostingsData = () => (dispatch) => {
   dispatch({type: "JOBS_POSTINGS_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}postings`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}postings`, {
     method: 'get',
     headers:{
       'Content-type': 'application/json',
@@ -194,7 +194,7 @@ export const refreshPage = () => async (dispatch) => {
   dispatch({type: "TASK_PENDING"})
   dispatch({type: "TICKER_PENDING"})
   dispatch({type: "JOBS_POSTINGS_PENDING"})
-  fetch(`${process.env.REACT_APP_BACKEND_URL || 'https://ikim91-my-dashboard.herokuapp.com/'}users/me`, {
+  fetch(`${'https://ikim91-my-dashboard.herokuapp.com/'}users/me`, {
     method: 'get',
     headers:{
       'Content-type': 'application/json',
