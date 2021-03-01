@@ -7,9 +7,8 @@
 }
 
 .login-container{
-  width: 40%;
-  height: 60%;
   text-align: center;
+  margin: auto;
 }
 
 .login-header{
@@ -18,20 +17,155 @@
 
 .login-main{
   display: flex;
-  margin-top: 25px;
   text-align: center;
   justify-content: center;
-}
-
-.login-main form{
-  width: 50%;
-}
-
-.login-main button{
-  margin-top: 25px;
 }
 
 .login-buttons{
   display: flex;
   justify-content: space-around;
+}
+
+@media only screen and (max-width: 1365px){
+  .login-container{
+    width: 40%;
+    height: 65%;
+  }
+  
+  .login-header{
+    margin-top: 15px;
+  }
+
+  .login-header h2{
+    font-size: 1.25em;
+  }
+  
+  .login-main{
+    margin-top: 15px;
+  }
+  
+  .login-main form{
+    margin: auto;
+    width: 50%;
+  }
+
+  label{
+    font-size: 1em;
+  }
+  
+  .login-main button{
+    margin-top: 15px;
+    font-size: 1em;
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1599px){
+  .login-container{
+    width: 40%;
+    height: 65%;
+  }
+  
+  .login-header{
+    margin-top: 50px;
+  }
+
+  .login-header h2{
+    font-size: 1.75em;
+  }
+  
+  .login-main{
+    margin-top: 25px;
+  }
+  
+  .login-main form{
+    margin: auto;
+    width: 50%;
+  }
+
+  label{
+    font-size: 1.25em;
+  }
+  
+  .login-main button{
+    margin-top: 25px;
+    font-size: 1.25em;
+    width: 35%;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1919px){
+  .login-container{
+    width: 40%;
+    height: 65%;
+  }
+  
+  .login-header{
+    margin-top: 75px;
+  }
+
+  .login-header h2{
+    font-size: 2em;
+  }
+  
+  .login-main{
+    margin-top: 25px;
+  }
+  
+  .login-main form{
+    margin: auto;
+    width: 50%;
+  }
+
+  label{
+    font-size: 1.5em;
+  }
+
+  .form-group input{
+    font-size: 1.25em;
+  }
+  
+  .login-main button{
+    margin-top: 25px;
+    font-size: 1.5em;
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 1920px){
+  .login-container{
+    width: 40%;
+    height: 65%;
+  }
+  
+  .login-header{
+    margin-top: 100px;
+  }
+
+  .login-header h2{
+    font-size: 3em;
+  }
+  
+  .login-main{
+    margin-top: 35px;
+  }
+  
+  .login-main form{
+    margin: auto;
+    width: 50%;
+  }
+
+  label{
+    font-size: 1.75em;
+  }
+
+  .form-group input{
+    font-size: 1.25em;
+  }
+  
+  .login-main button{
+    margin-top: 35px;
+    font-size: 1.75em;
+    width: 40%;
+  }
 }

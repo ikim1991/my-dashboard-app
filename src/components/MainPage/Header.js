@@ -43,7 +43,7 @@ function Header(props){
 
   return(
     <div className="header bg-dark">
-      <div className="title h2 text-light font-weight-bold d-flex align-items-center">{`Hello ${user.name}! It is ${moment(time).format('LLLL')}`}</div>
+      <div className="title text-light font-weight-bold d-flex align-items-center">{`Hello ${user.name}! It is ${moment(time).format('LLLL')}`}</div>
       <div className="logout">
         <button type="button" className="btn btn-dark" onClick={loggingOut}>LOGOUT</button>
       </div>

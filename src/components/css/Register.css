@@ -7,31 +7,164 @@
 }
 
 .register-container{
-  width: 40%;
-  height: 80%;
   text-align: center;
-}
-
-.register-header{
-  margin-top: 15px;
 }
 
 .register-main{
   display: flex;
-  margin-top: 15px;
   text-align: center;
   justify-content: center;
-}
-
-.register-main form{
-  width: 50%;
-}
-
-.register-main button{
-  margin-top: 15px;
 }
 
 .register-buttons{
   display: flex;
   justify-content: space-around;
+}
+
+
+@media only screen and (max-width: 1365px){
+  
+  .register-container{
+    width: 40%;
+    height: 90%;
+  }
+  
+  .register-header{
+    margin-top: 10px;
+  }
+
+  .register-header h2{
+    font-size: 1.25em;
+  }
+  
+  .register-main form{
+    width: 50%;
+  }
+
+  .form-group label{
+    font-size: 0.75em;
+  }
+
+  .form-group input{
+    font-size: 0.75em;
+  }
+
+  .register-buttons{
+    width: 100%;
+  }
+
+  .register-buttons button{
+    width: 35%;
+    font-size: 0.75em;
+  }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1599px){
+  .register-container{
+    width: 40%;
+    height: 75%;
+  }
+  
+  .register-header{
+    margin-top: 25px;
+  }
+
+  .register-header h2{
+    font-size: 1.5em;
+  }
+  
+  .register-main form{
+    width: 50%;
+  }
+
+  .form-group label{
+    font-size: 1em;
+  }
+
+  .form-group input{
+    font-size: 1em;
+  }
+
+  .register-buttons{
+    width: 100%;
+  }
+
+  .register-buttons button{
+    width: 35%;
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1919px){
+  .register-container{
+    width: 40%;
+    height: 70%;
+  }
+  
+  .register-header{
+    margin-top: 35px;
+  }
+
+  .register-header h2{
+    font-size: 1.75em;
+  }
+  
+  .register-main form{
+    width: 50%;
+  }
+
+  .form-group label{
+    font-size: 1.25em;
+  }
+
+  .form-group input{
+    font-size: 1.25em;
+  }
+
+  .register-buttons{
+    width: 100%;
+  }
+
+  .register-buttons button{
+    width: 35%;
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (min-width: 1920px){
+  .register-container{
+    width: 40%;
+    height: 70%;
+  }
+  
+  .register-header{
+    margin-top: 50px;
+  }
+
+  .register-header h2{
+    font-size: 2em;
+  }
+  
+  .register-main form{
+    width: 50%;
+  }
+
+  .form-group label{
+    font-size: 1.5em;
+    margin-top: 5px;
+  }
+
+  .form-group input{
+    font-size: 1.5em;
+  }
+
+  .register-buttons{
+    width: 100%;
+    margin-top: 35px;
+  }
+
+  .register-buttons button{
+    width: 35%;
+    font-size: 1.5em;
+  }
 }

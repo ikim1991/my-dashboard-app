@@ -210,3 +210,199 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+@media only screen and (max-width: 1365px){
+  .title{
+    font-size: 1.25em;
+  }
+
+  .logout button{
+    font-size: 0.8em;
+  }
+
+  .stock-ticker div{
+    font-size: 0.75em;
+  }
+
+  /* News.js */
+  .news-story div{
+    font-size: 0.8em;
+  }
+
+  /* Main.js */
+  .main-refresh button{
+    font-size: 0.8em;
+  }
+  .main-listing div{
+    font-size: 0.8em;
+  }
+  /* ToDo.js */
+  .description p{
+    font-size: 0.75em;
+  }
+  .todo-add button{
+    font-size: 0.8em;
+  }
+  .task-delete div{
+    font-size: 0.8em;
+  }
+  .create-task button{
+    font-size: 0.8em;
+  }
+  .task-description h6{
+    font-size: 0.8em;
+  }
+  .task-description textarea{
+    font-size: 0.8em;
+  }
+  .task-description input{
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (min-width: 1366px) and (max-width: 1599px){
+  .title{
+    font-size: 1.5em;
+  }
+
+  .logout button{
+    font-size: 1em;
+  }
+
+  .stock-ticker div{
+    font-size: 0.9em;
+  }
+
+  /* News.js */
+  .news-story div{
+    font-size: 1em;
+  }
+
+  /* Main.js */
+  .main-refresh button{
+    font-size: 1em;
+  }
+  .main-listing div{
+    font-size: 1em;
+  }
+  /* ToDo.js */
+  .description p{
+    font-size: 1em;
+  }
+  .todo-add button{
+    font-size: 1em;
+  }
+  .task-delete div{
+    font-size: 1em;
+  }
+  .create-task button{
+    font-size: 1em;
+  }
+  .task-description h6{
+    font-size: 1em;
+  }
+  .task-description textarea{
+    font-size: 1em;
+  }
+  .task-description input{
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 1600px) and (max-width: 1919px){
+  .title{
+    font-size: 1.75em;
+  }
+
+  .logout button{
+    font-size: 1.2em;
+  }
+
+  .stock-ticker div{
+    font-size: 1em;
+  }
+
+  /* News.js */
+  .news-story div{
+    font-size: 1.1em;
+  }
+
+  /* Main.js */
+  .main-refresh button{
+    font-size: 1.1em;
+  }
+  .main-listing div{
+    font-size: 1em;
+  }
+  /* ToDo.js */
+  .description p{
+    font-size: 1em;
+  }
+  .todo-add button{
+    font-size: 1em;
+  }
+  .task-delete div{
+    font-size: 1em;
+  }
+  .create-task button{
+    font-size: 1em;
+  }
+  .task-description h6{
+    font-size: 1em;
+  }
+  .task-description textarea{
+    font-size: 1em;
+  }
+  .task-description input{
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 1920px){
+  .title{
+    font-size: 2em;
+  }
+
+  .logout button{
+    font-size: 1.5em;
+  }
+
+  .stock-ticker div{
+    font-size: 1.1em;
+  }
+
+  /* News.js */
+  .news-story div{
+    font-size: 1.25em;
+  }
+
+  /* Main.js */
+  .main-refresh button{
+    font-size: 1.25em;
+  }
+  .main-listing div{
+    font-size: 1.2em;
+  }
+  /* ToDo.js */
+  .description p{
+    font-size: 1.2em;
+  }
+  .todo-add button{
+    font-size: 1.2em;
+  }
+  .task-delete div{
+    font-size: 1.2em;
+  }
+  .create-task button{
+    font-size: 1.2em;
+  }
+  .task-description h6{
+    font-size: 1.2em;
+  }
+  .task-description textarea{
+    font-size: 1.2em;
+  }
+  .task-description input{
+    font-size: 1.2em;
+  }
+}

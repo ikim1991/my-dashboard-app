@@ -146,7 +146,7 @@ export const updateJobPostings = (state = initialJobPostings, action={}) => {
     case "JOBS_POSTINGS_PENDING":
       return Object.assign({}, state, { postingsPending: true })
     case "JOBS_POSTINGS_SUCCESS":
-      return Object.assign({}, state, { postingsPending: false, postings: action.payload })
+      return Object.assign({}, state, { postingsPending: false, postings: action.payload.postings })
     case "JOBS_POSTINGS_ERROR":
       return Object.assign({}, state, { postingsPending: false, error: action.payload })
     case "LOGOUT_SUCCESS":
